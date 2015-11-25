@@ -13,9 +13,10 @@ app.controller("PromiseCtrl", function($scope, $timeout) {
   }
 
   var startTime = Date.now();
-  // get promise object
   add(5, 2)
-  // get result then ...
+    .then(function(result) {
+      return add(result, 3);
+    })
     .then(function(result) {
       $scope.result = result ;
       $scope.elapseTime = Date.now() - startTime;
