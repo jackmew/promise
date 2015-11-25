@@ -4,21 +4,23 @@ var app = angular.module('starter', ['ionic'])
 
 app.controller("PromiseCtrl", function($scope, $timeout) {
 
-  function add(x, y, callback) {
-    $timeout(function() {
-       callback(x + y);
+  function add(x, y) {
+    // $timeout is a promise object
+    return $timeout(function() {
+       // contains the value of x + y
+       return x + y;
     }, 100);
   }
 
   var startTime = Date.now();
-  add(5, 2, function(result) {
-    add(result, 3, function(result) {
-      add(result, 1, function(result) {
-        $scope.result = result ;
-        $scope.elapseTime = Date.now() - startTime ;
-      });
-    });
+  // get promise object
+  var promise = add(5, 2);
+  // get result then ...
+  promise.then(function(result) {
+    $scope.result = result ;
+    $scope.elapseTime = Date.now() - startTime;
   });
+  
 });
 
 app.run(function($ionicPlatform) {
