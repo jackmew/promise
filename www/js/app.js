@@ -21,10 +21,12 @@ app.controller("PromiseCtrl", function($q, $scope) {
   var startTime = Date.now();
   add(5, 2)
     .then(function(result) {
-      return add(result, 3);
+      return add(result, -20);
     })
     .then(function(result) {
-      return add(result, -20);
+      return add(result, 3);
+    }, function(failure) {
+      return 0 ;
     })
     .then(function(result) {
       $scope.result = result ;
