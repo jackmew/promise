@@ -2,14 +2,15 @@
 
 var app = angular.module('starter', ['ionic'])
 
-app.controller("PromiseCtrl", function($scope, $timeout) {
+app.controller("PromiseCtrl", function($q, $scope) {
 
   function add(x, y) {
-    // $timeout is a promise object
-    return $timeout(function() {
-       // contains the value of x + y
-       return x + y;
+    // for creating promise
+    var q = $q.defer();
+    setTimeout(function() {
+       q.resolve(x + y);
     }, 100);
+    return q.promise;
   }
 
   var startTime = Date.now();
