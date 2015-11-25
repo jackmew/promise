@@ -23,11 +23,12 @@
   </head>
   <body ng-app="starter">
 
-    <ion-pane>
+    <ion-pane ng-controller="PromiseCtrl">
       <ion-header-bar class="bar-stable">
         <h1 class="title">Promise</h1>
       </ion-header-bar>
-      <ion-content>
+      <ion-content style="text-align:center;">
+        <p>Result: {{result}}</p>
       </ion-content>
     </ion-pane>
   </body>
