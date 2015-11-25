@@ -2,13 +2,18 @@
 
 var app = angular.module('starter', ['ionic'])
 
-app.controller("PromiseCtrl", function($scope) {
+app.controller("PromiseCtrl", function($scope, $timeout) {
 
   function add(x, y, callback) {
-    callback(x + y);
+    $timeout(function() {
+       callback(x + y);
+    }, 100);
   }
+
+  var startTime = Date.now();
   add(5, 2, function(result) {
     $scope.result = result ;
+    $scope.elapseTime = Date.now() - startTime ;
   });
 });
 
