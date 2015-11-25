@@ -21,6 +21,9 @@ app.controller("PromiseCtrl", function($scope, $timeout) {
       return add(result, 1);
     })
     .then(function(result) {
+      return Array(result).join('*');
+    })
+    .then(function(result) {
       $scope.result = result ;
       $scope.elapseTime = Date.now() - startTime;
     });
