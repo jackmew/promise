@@ -4,11 +4,12 @@ var app = angular.module('starter', ['ionic'])
 
 app.controller("PromiseCtrl", function($scope) {
 
-  function add(x, y) {
-    return x + y ;
+  function add(x, y, callback) {
+    callback(x + y);
   }
-
-  $scope.result = add(5, 2) ;
+  add(5, 2, function(result) {
+    $scope.result = result ;
+  });
 });
 
 app.run(function($ionicPlatform) {
