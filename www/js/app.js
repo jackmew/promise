@@ -8,6 +8,7 @@ app.controller("PromiseCtrl", function($scope, $timeout) {
     $timeout(function() {
        callback(x + y);
     }, 100);
+    
   }
 
   var startTime = Date.now();
