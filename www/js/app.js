@@ -25,15 +25,15 @@ app.controller("PromiseCtrl", function($q, $scope) {
     })
     .then(function(result) {
       return add(result, 3);
-    }, function(failure) {
-      return 0 ;
     })
     .then(function(result) {
       $scope.result = result ;
-      $scope.elapseTime = Date.now() - startTime;
     })
     .catch(function(failure) {
       $scope.failure = failure ;
+    })
+    .finally(function() {
+      $scope.elapseTime = Date.now() - startTime;
     });
   
 });
