@@ -14,12 +14,12 @@ app.controller("PromiseCtrl", function($scope, $timeout) {
 
   var startTime = Date.now();
   // get promise object
-  var promise = add(5, 2);
+  add(5, 2)
   // get result then ...
-  promise.then(function(result) {
-    $scope.result = result ;
-    $scope.elapseTime = Date.now() - startTime;
-  });
+    .then(function(result) {
+      $scope.result = result ;
+      $scope.elapseTime = Date.now() - startTime;
+    });
   
 });
 
