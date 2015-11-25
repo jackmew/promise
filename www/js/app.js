@@ -8,7 +8,12 @@ app.controller("PromiseCtrl", function($q, $scope) {
     // for creating promise
     var q = $q.defer();
     setTimeout(function() {
-       q.resolve(x + y);
+       var result = x + y ;
+       if(result >= 0) {
+         q.resolve(x + y);
+       } else {
+         q.reject('negative value: ' + result);
+       }
     }, 100);
     return q.promise;
   }
@@ -19,14 +24,14 @@ app.controller("PromiseCtrl", function($q, $scope) {
       return add(result, 3);
     })
     .then(function(result) {
-      return add(result, 1);
-    })
-    .then(function(result) {
-      return Array(result).join('*');
+      return add(result, -20);
     })
     .then(function(result) {
       $scope.result = result ;
       $scope.elapseTime = Date.now() - startTime;
+    })
+    .catch(function(failure) {
+      $scope.failure = failure ;
     });
   
 });
